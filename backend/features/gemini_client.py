@@ -2,7 +2,9 @@ import os
 import requests
 
 
-GEMINI_API_KEY = "AIzaSyCytqPzYupgqQzPy_heU8kLOfMv46ojgWo"
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+
+
 class GeminiHttpClient:
     _instance = None
 
@@ -14,6 +16,8 @@ class GeminiHttpClient:
         return cls._instance
 
     def send_request(self, prompt):
+        if not self.api_key:
+            return {"error": "GEMINI_API_KEY is not set in the environment."}
         payload = {
             "contents": [{"parts": [{"text": prompt}]}]
         }

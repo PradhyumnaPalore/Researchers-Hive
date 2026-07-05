@@ -1,11 +1,15 @@
 // frontend/src/utils/requests.js
 
-const graphApi    = "http://localhost:8000/api/graph";
-const searchApi   = "http://localhost:8000/api/search";
-const userApi     = "http://localhost:8000/api/user";
-const featuresApi = "http://localhost:8000/api/features";
-const alertApi    = "http://localhost:8000/api/alert";
-const commentsApi = "http://127.0.0.1:8000/api/comments";
+// Set VITE_API_BASE_URL in a .env file (see .env.example) to point at a
+// deployed backend. Falls back to the local dev server otherwise.
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+
+const graphApi    = `${API_BASE}/api/graph`;
+const searchApi   = `${API_BASE}/api/search`;
+const userApi     = `${API_BASE}/api/user`;
+const featuresApi = `${API_BASE}/api/features`;
+const alertApi    = `${API_BASE}/api/alert`;
+const commentsApi = `${API_BASE}/api/comments`;
 
 // Generic JSON request wrapper
 const performJsonRequest = (url, method, body = null, isAuth = false) => {

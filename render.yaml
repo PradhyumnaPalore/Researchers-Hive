@@ -1,0 +1,25 @@
+# Render Blueprint for Researcher's Hive backend.
+# Deploy: connect this repo on Render -> "New +" -> "Blueprint".
+# Set the secrets marked sync:false in the Render dashboard after creation.
+services:
+  - type: web
+    name: researchers-hive-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt && python -m spacy download en_core_web_sm && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn researchers_hive.wsgi:application"
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: DJANGO_CORS_ORIGINS
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB_NAME
+        value: ResearchersHive
+      - key: GEMINI_API_KEY
+        sync: false
