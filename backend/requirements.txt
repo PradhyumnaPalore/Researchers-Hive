@@ -1,3 +1,4 @@
+setuptools==69.5.1
 Django==4.1.12
 django-cors-headers==4.3.0
 djangorestframework==3.14.0
