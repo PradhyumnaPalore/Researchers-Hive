@@ -1,5 +1,7 @@
 # Researcher's Hive
 
+> Originally built as a team project with **SENewTeam** for a software engineering course; re-hosted here as part of my personal portfolio.
+
 Researcher's Hive is a research tool designed to help PhD students and researchers manage and organize their research knowledge. It provides efficient search, storage, visualization, commenting, and recommendation features to enhance the research workflow.
 
 ## Features
